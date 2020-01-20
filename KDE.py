@@ -11,6 +11,10 @@ import tkinter
 import random
 import os
 
+#download .root files
+#tu run program type in terminal: python KDE.py
+#python version should be > 3
+
 class KDE():
 	def __init__(self, wch_file, number_of_slices = 4):
 		self.num_of_slices = number_of_slices 	#number of regions Dalitz plot will be divided at
