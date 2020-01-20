@@ -90,7 +90,7 @@ class KDE():
 		else:
 			self.reg = num_of_slices
 		
-	def triangle(self, input_list, xi, h):	#triangle and gauus kernel function
+	def triangle(self, input_list, xi, h):	#triangle and gauus kernel function, gauss can be neglected - only triangle kernel will be used
 		weight = 0.0
 		for x in input_list:
 			weight = weight + (1 - abs(x-xi)/h)/h
