@@ -6,12 +6,14 @@ import time
 import math
 from ROOT import TH2F, TCanvas, TLatex, TColor, gStyle, TStyle
 
+#tu run this program type: python plots.py
+#
 
 pd = open("toy_200k_0per_Dalitz.txt", "r")
 pxp = open("toy_200k_0per_par.txt", "r")
 pxa = open("toy_200k_0per_apar.txt", "r")
 
-
+#function for reading files,
 def odczyt(input_file):
 	out_list = []
 	for i, elem in enumerate(input_file):
@@ -56,11 +58,12 @@ while(which_plot != 0):
 	else:
 		fig, axes = plt.subplots(2, num_of_slices//2, figsize = (20,15))
 		plt.subplots_adjust(wspace = 0.4, hspace = 0.4)
+		#to plot density functions for all regions at the same time, figure(canvas) is divided in subplots
 
 	if which_plot == 1:
 		plt.hist2d(m2pk, m2kpi, bins = (30,30), cmap = 'YlGnBu')
 		plt.colorbar(orientation='vertical')
-		plt.xlabel(r'$m^2_{pK} \;\ [GeV^2/c^4]$')
+		plt.xlabel(r'$m^2_{pK} \;\ [GeV^2/c^4]$') #$$ is used for mathematical expressions
 		plt.ylabel(r'$m^2_{K\pi} \;\ [GeV^2/c^4]$')
 		plt.axis([2.0, 5.5, 0.25, 2.5])
 		plt.show()
@@ -103,8 +106,8 @@ while(which_plot != 0):
 
 	elif which_plot == 5:
 
-		ptp = open("density_func_0per_triangle_All_of_4reg_par_BC_NM.txt", "r")
-		pta = open("density_func_0per_triangle_All_of_4reg_apar_BC_NM.txt", "r")
+		ptp = open("density_func_0per_triangle_All_of_4reg_par_BC.txt", "r")
+		pta = open("density_func_0per_triangle_All_of_4reg_apar_BC.txt", "r")
 		y_weight_p_t = odczyt(ptp)
 		y_weight_a_t = odczyt(pta)
 
@@ -132,7 +135,7 @@ while(which_plot != 0):
 
 		for i in range(0,2):
 			for j in range(0,num_of_slices//2):
-				axes[i,j].plot(x_par[k], y_weight_p_g[k], 'b-', alpha = 0.5, label = 'particles')
+				axes[i,j].plot(x_par[k], y_weight_p_g[k], 'b-', alpha = 0.5, label = 'particles')  #alpha is the transparency level of plot
 				axes[i,j].plot(x_apar[k], y_weight_a_g[k], 'g-', alpha = 0.8, label = 'antiparticles')
 				axes[i,j].set_xlabel(r'$m^2_{pK} \;\ [GeV^2/c^4]$')
 				axes[i,j].set_ylabel(r'$\mathrm{density \ function} \;\ [1/GeV^2/c^4]$')
